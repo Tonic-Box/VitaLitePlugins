@@ -1,0 +1,46 @@
+{
+  "name": "Vita Official",
+  "sequence": 1794223428,
+  "plugins": [
+    {
+      "id": "vitavr",
+      "name": "VitaVR",
+      "author": "TonicBox",
+      "description": "Play in a VR headset: first person or tabletop, with your interfaces around you",
+      "tags": [
+        "vita",
+        "vr",
+        "virtual",
+        "reality",
+        "headset",
+        "openxr"
+      ],
+      "version": "1.0.0",
+      "minVita": "1.13.6_3",
+      "requires": [],
+      "url": "https://github.com/Tonic-Box/VitaLitePlugins/releases/download/vitavr-1.0.0/vitavr-1.0.0.jar",
+      "sha256": "79e0b9fdcaa83b1ff3f7a666486c12434a393c2f64d307fa633ecec15127a49e",
+      "size": 2590618,
+      "source": "https://github.com/Tonic-Box/VitaVR"
+    },
+    {
+      "id": "vitawintertodt",
+      "name": "Vita Auto Wintertodt",
+      "author": "TonicBox",
+      "description": "Plays Wintertodt minigame for you",
+      "tags": [
+        "vita",
+        "wintertodt",
+        "minigame",
+        "auto"
+      ],
+      "version": "1.0.0",
+      "minVita": "1.13.6_3",
+      "requires": [],
+      "url": "https://github.com/Tonic-Box/VitaLitePlugins/releases/download/vitawintertodt-1.0.0/vitawintertodt-1.0.0.jar",
+      "sha256": "389e7148201cb3df0c12c741f8e57a4d9f1b04fd2c10bc44f363937a4bacb3b3",
+      "size": 1760490,
+      "source": "https://github.com/Tonic-Box/VitaWinterTodt"
+    }
+  ]
+}
