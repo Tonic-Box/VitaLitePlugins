@@ -33,7 +33,8 @@ You need JDK 11 and the [GitHub CLI](https://cli.github.com) (run `gh auth login
        "source": "https://github.com/you/MyPlugin",
        "project": "../MyPlugin",
        "task": "jar",
-       "jar": "build/libs/MyPlugin-*.jar"
+       "jar": "build/libs/MyPlugin-*.jar",
+       "icon": "src/main/resources/com/you/myplugin/icon.png"
      }
    ]
    ```
@@ -59,6 +60,7 @@ To check everything first without uploading or pushing anything, run `./gradlew 
 | `project` | Path to the plugin's Gradle project, relative to this repo. |
 | `task` | Gradle task that builds the jar, usually `jar` or `shadowJar`. |
 | `jar` | Where that task puts the jar, relative to the project. `*` and `~/` work. |
+| `icon` | Optional image shown on the plugin's card, relative to the project. It's scaled down for you. |
 
 The plugin's name, description and tags come from its `@PluginDescriptor`, so you don't repeat them here.
 

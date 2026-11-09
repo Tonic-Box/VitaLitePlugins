@@ -3,6 +3,10 @@ package com.tonic.vitahub.build;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import javax.imageio.ImageIO;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -53,6 +57,8 @@ public final class Release {
         public String sha256;
         public long size;
         public String source;
+        public String icon;
+        public String iconSha256;
     }
 
     /** Where things are and what this run may do. */
@@ -66,6 +72,8 @@ public final class Release {
         public boolean dryRun;
         public boolean localUrls;
     }
+
+    private static final int ICON_SIZE = 64;
 
     private Release() {
     }
@@ -145,6 +153,7 @@ public final class Release {
             plugin.minVita = entry.minVita;
             plugin.requires = new ArrayList<>(entry.requires);
             plugin.source = entry.source;
+            icon(options, entry, plugin);
             manifest.plugins.add(plugin);
         }
 
@@ -159,6 +168,9 @@ public final class Release {
         System.out.println(released.isEmpty() ? "No new plugin versions; plugins.json rewritten" : "Released: " + String.join(", ", released));
         if (!options.dryRun) {
             run(options.root, "git", "add", "plugins.json");
+            if (Files.isDirectory(options.root.resolve("icons"))) {
+                run(options.root, "git", "add", "--all", "icons");
+            }
             if (options.sign) {
                 run(options.root, "git", "add", "plugins.json.sig");
             } else {
@@ -194,7 +206,18 @@ public final class Release {
             }
             checked++;
         }
-        System.out.println("plugins.json signature valid; " + manifest.plugins.size() + " plugins, " + checked + " jars checked against their hashes");
+        int icons = 0;
+        for (Plugin plugin : manifest.plugins) {
+            if (plugin.iconSha256 == null) {
+                continue;
+            }
+            Path icon = root.resolve("icons/" + plugin.id + ".png");
+            if (!Files.isRegularFile(icon) || !sha256(icon).equals(plugin.iconSha256)) {
+                throw new IllegalStateException("icons/" + plugin.id + ".png does not match its plugins.json entry");
+            }
+            icons++;
+        }
+        System.out.println("plugins.json signature valid; " + manifest.plugins.size() + " plugins, " + checked + " jars and " + icons + " icons checked against their hashes");
     }
 
     private static Path build(Options options, Catalog.Entry entry) throws IOException, InterruptedException {
@@ -249,6 +272,58 @@ public final class Release {
         plugin.url = options.localUrls ? jar.toUri().toString()
                 : "https://github.com/" + options.repository + "/releases/download/" + entry.id + "-" + entry.version + "/" + asset;
         return plugin;
+    }
+
+    private static void icon(Options options, Catalog.Entry entry, Plugin plugin) throws IOException {
+        Path file = options.root.resolve("icons/" + entry.id + ".png");
+        if (entry.icon == null || entry.icon.isBlank()) {
+            Files.deleteIfExists(file);
+            plugin.icon = null;
+            plugin.iconSha256 = null;
+            return;
+        }
+        Path source = options.root.resolve(entry.project).normalize().resolve(entry.icon);
+        BufferedImage image = Files.isRegularFile(source) ? ImageIO.read(source.toFile()) : null;
+        if (image == null) {
+            throw new IllegalStateException(entry.id + ": icon " + source + " is not a readable image");
+        }
+        Files.createDirectories(file.getParent());
+        ImageIO.write(fit(image, ICON_SIZE), "png", file.toFile());
+        plugin.iconSha256 = sha256(file);
+        plugin.icon = options.localUrls ? file.toUri().toString() : "https://raw.githubusercontent.com/" + options.repository + "/HEAD/icons/" + entry.id + ".png";
+    }
+
+    private static BufferedImage fit(BufferedImage image, int size) {
+        BufferedImage current = toArgb(image);
+        while (Math.max(current.getWidth(), current.getHeight()) > size * 2) {
+            current = scale(current, Math.max(1, current.getWidth() / 2), Math.max(1, current.getHeight() / 2));
+        }
+        double ratio = Math.min(1.0, (double) size / Math.max(current.getWidth(), current.getHeight()));
+        int width = Math.max(1, (int) Math.round(current.getWidth() * ratio));
+        int height = Math.max(1, (int) Math.round(current.getHeight() * ratio));
+        return width == current.getWidth() && height == current.getHeight() ? current : scale(current, width, height);
+    }
+
+    private static BufferedImage toArgb(BufferedImage image) {
+        if (image.getType() == BufferedImage.TYPE_INT_ARGB) {
+            return image;
+        }
+        BufferedImage argb = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D graphics = argb.createGraphics();
+        graphics.drawImage(image, 0, 0, null);
+        graphics.dispose();
+        return argb;
+    }
+
+    private static BufferedImage scale(BufferedImage image, int width, int height) {
+        BufferedImage scaled = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D graphics = scaled.createGraphics();
+        graphics.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        graphics.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        graphics.drawImage(image, 0, 0, width, height, null);
+        graphics.dispose();
+        return scaled;
     }
 
     private static void checkRequires(List<Catalog.Entry> catalog) {

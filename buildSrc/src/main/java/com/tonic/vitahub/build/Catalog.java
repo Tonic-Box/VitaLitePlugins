@@ -26,6 +26,7 @@ public final class Catalog {
         public String project;
         public String task;
         public String jar;
+        public String icon;
     }
 
     private Catalog() {

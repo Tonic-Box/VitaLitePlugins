@@ -8,7 +8,8 @@
     "source": "https://github.com/Tonic-Box/VitaVR",
     "project": "../../VitaVR",
     "task": "buildPlugin",
-    "jar": "~/.runelite/sideloaded-plugins/VitaVR-*.jar"
+    "jar": "~/.runelite/sideloaded-plugins/VitaVR-*.jar",
+    "icon": "src/main/resources/com/tonic/vitavr/icon.png"
   },
   {
     "id": "vitawintertodt",
@@ -19,6 +20,7 @@
     "source": "https://github.com/Tonic-Box/VitaWinterTodt",
     "project": "../../VitaWinterTodt",
     "task": "jar",
-    "jar": "build/libs/VitaWinterTodt-*.jar"
+    "jar": "build/libs/VitaWinterTodt-*.jar",
+    "icon": "src/main/resources/com/tonic/vitawintertodt/icon.png"
   }
 ]
