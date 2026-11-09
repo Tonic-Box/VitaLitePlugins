@@ -1,0 +1,8 @@
+/.gradle/
+/build/
+/buildSrc/.gradle/
+/buildSrc/build/
+.idea/
+*.iml
+local.properties
+*.pem

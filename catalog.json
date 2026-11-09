@@ -1,0 +1,24 @@
+[
+  {
+    "id": "vitavr",
+    "version": "1.0.0",
+    "author": "TonicBox",
+    "minVita": "1.13.6_3",
+    "requires": [],
+    "source": "https://github.com/Tonic-Box/VitaVR",
+    "project": "../../VitaVR",
+    "task": "buildPlugin",
+    "jar": "~/.runelite/sideloaded-plugins/VitaVR-*.jar"
+  },
+  {
+    "id": "vitawintertodt",
+    "version": "1.0.0",
+    "author": "TonicBox",
+    "minVita": "1.13.6_3",
+    "requires": [],
+    "source": "https://github.com/Tonic-Box/VitaWinterTodt",
+    "project": "../../VitaWinterTodt",
+    "task": "jar",
+    "jar": "build/libs/VitaWinterTodt-*.jar"
+  }
+]
