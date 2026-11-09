@@ -8,8 +8,16 @@ own repository.
 
 ## Install plugins from a repo
 
-In VitaLite, open the **Vita Hub** tab, go to **Hub**, then **Repositories**, and enter the repo as `owner/repo`
-(for example `Tonic-Box/VitaLitePlugins`).
+The official repo is built in: open the **Vita Hub** tab and go to **Browse**.
+
+To add another repo, open the **⋯** menu, choose **Repositories…**, and enter it as `owner/repo` (for example
+`you/MyPlugins`).
+
+## Get your plugin into the official repo
+
+1. Make your plugin's source public on GitHub.
+2. DM **TonicBox** on Discord with the link to the source repo.
+3. Once it passes review, it's published here and shows up in every VitaLite user's Hub.
 
 ## Host your own
 
