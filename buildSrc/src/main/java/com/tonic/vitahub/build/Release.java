@@ -21,6 +21,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 /**
@@ -59,12 +61,34 @@ public final class Release {
         public Path privateKey;
         public String repository;
         public String manifestName;
+        public boolean sign;
         public String gh;
         public boolean dryRun;
         public boolean localUrls;
     }
 
     private Release() {
+    }
+
+    /**
+     * @param root the repository
+     * @return owner/repo of the GitHub remote named origin, or null when there is none
+     */
+    public static String originRepository(Path root) {
+        try {
+            Process process = new ProcessBuilder("git", "remote", "get-url", "origin").directory(root.toFile()).redirectErrorStream(true).start();
+            String url = new String(process.getInputStream().readAllBytes(), StandardCharsets.UTF_8).trim();
+            if (process.waitFor() != 0) {
+                return null;
+            }
+            Matcher matcher = Pattern.compile("github\\.com[:/]([^/]+/[^/]+?)(\\.git)?/?$").matcher(url);
+            return matcher.find() ? matcher.group(1) : null;
+        } catch (IOException e) {
+            return null;
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            return null;
+        }
     }
 
     /**
@@ -90,7 +114,7 @@ public final class Release {
      * @throws GeneralSecurityException if signing fails
      */
     public static void publish(Options options) throws IOException, InterruptedException, GeneralSecurityException {
-        if (!Files.isRegularFile(options.privateKey)) {
+        if (options.sign && !Files.isRegularFile(options.privateKey)) {
             throw new IllegalStateException("no signing key at " + options.privateKey + "; run generateSigningKey first");
         }
         List<Catalog.Entry> catalog = Catalog.read(options.root.resolve("catalog.json"));
@@ -126,10 +150,20 @@ public final class Release {
 
         byte[] bytes = (GSON.toJson(manifest) + "\n").getBytes(StandardCharsets.UTF_8);
         Files.write(manifestFile, bytes);
-        Files.writeString(options.root.resolve("plugins.json.sig"), Signing.sign(bytes, options.privateKey) + "\n", StandardCharsets.US_ASCII);
-        System.out.println(released.isEmpty() ? "No new plugin versions; plugins.json re-signed" : "Released: " + String.join(", ", released));
+        Path signatureFile = options.root.resolve("plugins.json.sig");
+        if (options.sign) {
+            Files.writeString(signatureFile, Signing.sign(bytes, options.privateKey) + "\n", StandardCharsets.US_ASCII);
+        } else {
+            Files.deleteIfExists(signatureFile);
+        }
+        System.out.println(released.isEmpty() ? "No new plugin versions; plugins.json rewritten" : "Released: " + String.join(", ", released));
         if (!options.dryRun) {
-            run(options.root, "git", "add", "plugins.json", "plugins.json.sig");
+            run(options.root, "git", "add", "plugins.json");
+            if (options.sign) {
+                run(options.root, "git", "add", "plugins.json.sig");
+            } else {
+                run(options.root, "git", "rm", "--cached", "--ignore-unmatch", "-q", "plugins.json.sig");
+            }
             run(options.root, "git", "commit", "-m", released.isEmpty() ? "Update plugin metadata" : "Release " + String.join(", ", released));
             run(options.root, "git", "push", "origin", "HEAD:main");
         }

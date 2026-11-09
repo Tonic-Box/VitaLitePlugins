@@ -1,43 +1,71 @@
 # VitaLite Plugins
 
-The official plugin repository for VitaLite's Vita Hub. It holds no plugin source: `catalog.json` points at each plugin's
-own project, the built jars are published as GitHub releases (one tag per plugin version, `<id>-<version>`), and
-`plugins.json` lists them for the Hub. `plugins.json.sig` is its signature; VitaLite refuses an official manifest that
-does not match it.
+A plugin repository for VitaLite's **Vita Hub**. This one is the official repo, and you can fork it to host your own
+plugins. Anyone can then add your repo in the Hub and install, update or uninstall your plugins from inside the client.
 
-## Releasing
+Only the manifest and these build tools live here. Jars go up as GitHub releases, and your plugin source stays in its
+own repository.
 
-Requires JDK 11, the GitHub CLI (`gh auth login`), and the signing key at `~/.vitalite/hub-signing.pem`.
+## Install plugins from a repo
 
-1. Bump the plugin's `version` in `catalog.json` (or add a new entry).
-2. `./gradlew publishRelease`
+In VitaLite, open the **Vita Hub** tab, go to **Hub**, then **Repositories**, and enter the repo as `owner/repo`
+(for example `Tonic-Box/VitaLitePlugins`).
 
-Only plugins whose version is not in `plugins.json` yet are built and released. The task then rewrites, signs, commits
-and pushes `plugins.json`.
+## Host your own
 
-`./gradlew publishRelease -PdryRun` does everything except the GitHub releases, the commit and the push.
-`./gradlew verifyManifest` checks the signature and the jars in `build/release`.
+You need JDK 11 and the [GitHub CLI](https://cli.github.com) (run `gh auth login` once).
 
-## Adding a plugin
+1. **Fork** this repo and clone your fork.
+2. **Name it** by editing `gradle.properties`:
+   ```properties
+   hubName=My Plugins
+   hubSigned=false
+   ```
+3. **List your plugins** in `catalog.json`. Replace the entries with your own:
+   ```json
+   [
+     {
+       "id": "myplugin",
+       "version": "1.0.0",
+       "author": "You",
+       "minVita": "1.13.6_3",
+       "requires": [],
+       "source": "https://github.com/you/MyPlugin",
+       "project": "../MyPlugin",
+       "task": "jar",
+       "jar": "build/libs/MyPlugin-*.jar"
+     }
+   ]
+   ```
+4. **Publish** with `./gradlew publishRelease`. This builds each plugin, uploads the jars as releases, and writes,
+   commits and pushes `plugins.json`.
+5. **Share** your `owner/repo`.
 
-Add an entry to `catalog.json`:
+To ship an update, raise the plugin's `version` and run `publishRelease` again. Only changed versions are rebuilt and
+uploaded, and users see an **Update** button in the Hub.
 
-| field | meaning |
+To check everything first without uploading or pushing anything, run `./gradlew publishRelease -PdryRun`.
+
+## Catalog fields
+
+| Field | What it is |
 |---|---|
-| `id` | lowercase id, also the release tag prefix |
-| `version` | numbers separated by dots |
-| `author` | shown in the Hub |
-| `minVita` | oldest VitaLite version it runs on |
-| `requires` | ids of plugins it needs installed |
-| `source` | the plugin's source repository, shown in the Hub |
-| `project` | path to the plugin's Gradle project |
-| `task` | the task that builds its jar |
-| `jar` | where that task writes the jar (`~/` and `*` allowed) |
+| `id` | Lowercase id, such as `myplugin`. It never changes. |
+| `version` | Numbers and dots, such as `1.2.0`. Raise it to release. |
+| `author` | Shown in the Hub. |
+| `minVita` | Oldest VitaLite version the plugin works on. |
+| `requires` | Ids of other plugins it needs. They install with it. |
+| `source` | Optional link to the plugin's code. |
+| `project` | Path to the plugin's Gradle project, relative to this repo. |
+| `task` | Gradle task that builds the jar, usually `jar` or `shadowJar`. |
+| `jar` | Where that task puts the jar, relative to the project. `*` and `~/` work. |
 
-Name, description and tags come from the plugin's `@PluginDescriptor`.
+The plugin's name, description and tags come from its `@PluginDescriptor`, so you don't repeat them here.
 
-## Signing key
+## Safety
 
-`./gradlew generateSigningKey` creates the key once, outside this repository, and writes the public key to
-`hub-public-key.txt` for VitaLite. Keep the private key safe and never commit it: whoever holds it can publish official
-plugins.
+Users get a warning the first time they add a repo other than the official one, because plugins run with full access
+to their client. Every jar is checked against the SHA-256 in `plugins.json` before it loads.
+
+Only the official repo is signed (`hubSigned=true`), with a private key that never leaves the maintainer's machine.
+Forks leave signing off.

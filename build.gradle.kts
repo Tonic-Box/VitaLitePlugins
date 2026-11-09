@@ -11,8 +11,10 @@ fun releaseOptions(): Release.Options {
     val options = Release.Options()
     options.root = projectDir.toPath()
     options.privateKey = signingKey
-    options.repository = (findProperty("repository") as String?) ?: "Tonic-Box/VitaLitePlugins"
-    options.manifestName = "Vita Official"
+    options.repository = (findProperty("repository") as String?) ?: Release.originRepository(projectDir.toPath())
+        ?: throw GradleException("no GitHub remote named origin; pass -Prepository=owner/repo")
+    options.manifestName = (findProperty("hubName") as String?) ?: "My Plugins"
+    options.sign = (findProperty("hubSigned") as String?).toBoolean()
     options.gh = (findProperty("gh") as String?) ?: Release.defaultGh()
     options.dryRun = hasProperty("dryRun")
     options.localUrls = hasProperty("localUrls")
@@ -41,7 +43,7 @@ tasks.register("buildPlugins") {
 
 tasks.register("publishRelease") {
     group = "vita hub"
-    description = "Releases new plugin versions, then signs, commits and pushes plugins.json (-PdryRun: no release, commit or push; -PlocalUrls: file: URLs for testing)"
+    description = "Releases new plugin versions, then writes (signed when hubSigned=true), commits and pushes plugins.json (-PdryRun: no release, commit or push; -PlocalUrls: file: URLs for testing)"
     doLast {
         Release.publish(releaseOptions())
     }
