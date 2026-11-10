@@ -54,7 +54,8 @@ You need JDK 11 and the [GitHub CLI](https://cli.github.com) (run `gh auth login
 To ship an update, raise the plugin's `version` and run `publishRelease` again. Only changed versions are rebuilt and
 uploaded, and users see an **Update** button in the Hub.
 
-To check everything first without uploading or pushing anything, run `./gradlew publishRelease -PdryRun`.
+To check everything first without uploading or pushing anything, run `./gradlew publishRelease -PdryRun`. It builds
+the jars and writes the manifest it would publish to `build/dry-run/plugins.json`, leaving the repo's own untouched.
 
 ## Catalog fields
 

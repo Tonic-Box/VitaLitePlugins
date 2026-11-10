@@ -43,7 +43,7 @@ tasks.register("buildPlugins") {
 
 tasks.register("publishRelease") {
     group = "vita hub"
-    description = "Releases new plugin versions, then writes (signed when hubSigned=true), commits and pushes plugins.json (-PdryRun: no release, commit or push; -PlocalUrls: file: URLs for testing)"
+    description = "Releases new plugin versions, then writes (signed when hubSigned=true), commits and pushes plugins.json (-PdryRun: no release, commit or push, manifest written to build/dry-run; -PlocalUrls: file: URLs for testing)"
     doLast {
         Release.publish(releaseOptions())
     }

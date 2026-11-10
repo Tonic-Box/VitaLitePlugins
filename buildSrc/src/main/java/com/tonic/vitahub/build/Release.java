@@ -115,7 +115,8 @@ public final class Release {
 
     /**
      * Releases every catalog plugin whose version is not in plugins.json yet, then rewrites, signs, commits and pushes
-     * plugins.json. A dry run skips the GitHub releases, the commit and the push.
+     * plugins.json. A dry run skips the GitHub releases, the commit and the push, and writes the manifest it would publish
+     * to build/dry-run instead, so the next real run still releases what it found new.
      *
      * @param options where things are and what this run may do
      * @throws IOException              if a build, release, write or git step fails
@@ -160,14 +161,19 @@ public final class Release {
         }
 
         byte[] bytes = (GSON.toJson(manifest) + "\n").getBytes(StandardCharsets.UTF_8);
-        Files.write(manifestFile, bytes);
-        Path signatureFile = options.root.resolve("plugins.json.sig");
+        Path output = options.dryRun ? options.root.resolve("build/dry-run") : options.root;
+        Files.createDirectories(output);
+        Files.write(output.resolve("plugins.json"), bytes);
+        Path signatureFile = output.resolve("plugins.json.sig");
         if (options.sign) {
             Files.writeString(signatureFile, Signing.sign(bytes, options.privateKey) + "\n", StandardCharsets.US_ASCII);
         } else {
             Files.deleteIfExists(signatureFile);
         }
-        System.out.println(released.isEmpty() ? "No new plugin versions; plugins.json rewritten" : "Released: " + String.join(", ", released));
+        System.out.println(released.isEmpty() ? "No new plugin versions; plugins.json rewritten" : (options.dryRun ? "Would release: " : "Released: ") + String.join(", ", released));
+        if (options.dryRun) {
+            System.out.println("Dry run: manifest written to " + output.resolve("plugins.json"));
+        }
         if (!options.dryRun) {
             run(options.root, "git", "add", "plugins.json");
             if (Files.isDirectory(options.root.resolve("icons"))) {
