@@ -23,6 +23,7 @@ public final class Catalog {
         public String minVita;
         public List<String> requires = new ArrayList<>();
         public String source;
+        public String readme;
         public String project;
         public String task;
         public String jar;
@@ -45,6 +46,9 @@ public final class Catalog {
             }
             if (entry.version == null || !entry.version.matches("\\d+(\\.\\d+)*")) {
                 throw new IllegalStateException(entry.id + ": version must be numbers separated by dots: " + entry.version);
+            }
+            if (entry.readme != null && !entry.readme.startsWith("https://")) {
+                throw new IllegalStateException(entry.id + ": readme must be an https:// link: " + entry.readme);
             }
             if (entry.requires == null) {
                 entry.requires = new ArrayList<>();

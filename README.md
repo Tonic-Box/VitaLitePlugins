@@ -39,6 +39,7 @@ You need JDK 11 and the [GitHub CLI](https://cli.github.com) (run `gh auth login
        "minVita": "1.13.6_3",
        "requires": [],
        "source": "https://github.com/you/MyPlugin",
+       "readme": "https://github.com/you/MyPlugin/blob/main/README.md",
        "project": "../MyPlugin",
        "task": "jar",
        "jar": "build/libs/MyPlugin-*.jar",
@@ -65,6 +66,7 @@ To check everything first without uploading or pushing anything, run `./gradlew 
 | `minVita` | Oldest VitaLite version the plugin works on. |
 | `requires` | Ids of other plugins it needs. They install with it. |
 | `source` | Optional link to the plugin's code. |
+| `readme` | Optional `https://` link straight to the plugin's readme, such as `.../blob/main/MyPlugin/README.md` in a repo that holds several plugins. The Hub shows an info button that opens it. |
 | `project` | Path to the plugin's Gradle project, relative to this repo. |
 | `task` | Gradle task that builds the jar, usually `jar` or `shadowJar`. |
 | `jar` | Where that task puts the jar, relative to the project. `*` and `~/` work. |

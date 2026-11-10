@@ -57,6 +57,7 @@ public final class Release {
         public String sha256;
         public long size;
         public String source;
+        public String readme;
         public String icon;
         public String iconSha256;
     }
@@ -153,6 +154,7 @@ public final class Release {
             plugin.minVita = entry.minVita;
             plugin.requires = new ArrayList<>(entry.requires);
             plugin.source = entry.source;
+            plugin.readme = entry.readme;
             icon(options, entry, plugin);
             manifest.plugins.add(plugin);
         }
