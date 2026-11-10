@@ -1,7 +1,7 @@
 [
   {
     "id": "vitavr",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "TonicBox",
     "minVita": "1.13.6_3",
     "requires": [],
@@ -14,7 +14,7 @@
   },
   {
     "id": "vitawintertodt",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "TonicBox",
     "minVita": "1.13.6_3",
     "requires": [],
@@ -24,5 +24,18 @@
     "task": "jar",
     "jar": "build/libs/VitaWinterTodt-*.jar",
     "icon": "src/main/resources/com/tonic/vitawintertodt/icon.png"
+  },
+  {
+    "id": "fourtifysgemmining",
+    "version": "1.0.1",
+    "author": "Fourtifys",
+    "minVita": "1.13.6_7",
+    "requires": [],
+    "source": "https://github.com/Fourtifys/Fourtifys-VitaLite-releases",
+    "readme": "https://github.com/Fourtifys/Fourtifys-VitaLite-releases/blob/main/FourtifysGemMining/README.md",
+    "project": "../../Fourtifys-VitaLite-releases/FourtifysGemMining",
+    "task": "jar",
+    "jar": "build/libs/FourtifysGemMining-*.jar",
+    "icon": "src/main/resources/com/fourtifys/gemmining/icon.png"
   }
 ]
