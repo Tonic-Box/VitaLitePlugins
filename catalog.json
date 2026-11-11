@@ -5,12 +5,12 @@
     "author": "TonicBox",
     "minVita": "1.13.6_3",
     "requires": [],
-    "source": "https://github.com/Tonic-Box/VitaVR",
-    "readme": "https://github.com/Tonic-Box/VitaVR/blob/main/README.md",
-    "project": "../../VitaVR",
-    "task": "buildPlugin",
+    "source": "https://github.com/Tonic-Box/VitaPluginsSource/tree/main/vitavr",
+    "readme": "https://github.com/Tonic-Box/VitaPluginsSource/blob/main/vitavr/README.md",
+    "project": "../VitaPluginsSource",
+    "task": ":vitavr:buildPlugin",
     "jar": "~/.runelite/sideloaded-plugins/VitaVR-*.jar",
-    "icon": "src/main/resources/com/tonic/vitavr/icon.png"
+    "icon": "vitavr/src/main/resources/com/tonic/vitavr/icon.png"
   },
   {
     "id": "vitawintertodt",
@@ -18,12 +18,12 @@
     "author": "TonicBox",
     "minVita": "1.13.6_3",
     "requires": [],
-    "source": "https://github.com/Tonic-Box/VitaWinterTodt",
-    "readme": "https://github.com/Tonic-Box/VitaWinterTodt/blob/main/README.md",
-    "project": "../../VitaWinterTodt",
-    "task": "jar",
-    "jar": "build/libs/VitaWinterTodt-*.jar",
-    "icon": "src/main/resources/com/tonic/vitawintertodt/icon.png"
+    "source": "https://github.com/Tonic-Box/VitaPluginsSource/tree/main/vitawintertodt",
+    "readme": "https://github.com/Tonic-Box/VitaPluginsSource/blob/main/vitawintertodt/README.md",
+    "project": "../VitaPluginsSource",
+    "task": ":vitawintertodt:jar",
+    "jar": "vitawintertodt/build/libs/VitaWinterTodt-*.jar",
+    "icon": "vitawintertodt/src/main/resources/com/tonic/vitawintertodt/icon.png"
   },
   {
     "id": "fourtifysgemmining",
