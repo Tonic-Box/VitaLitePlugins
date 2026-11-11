@@ -1,6 +1,6 @@
 {
   "name": "Vita Official",
-  "sequence": 1794326338,
+  "sequence": 1794417518,
   "plugins": [
     {
       "id": "vitavr",
@@ -21,8 +21,8 @@
       "url": "https://github.com/Tonic-Box/VitaLitePlugins/releases/download/vitavr-1.0.1/vitavr-1.0.1.jar",
       "sha256": "19a478ed96423889577058fafbdd5b9e7ed7b3f00c52cee14ea0955f762f5eff",
       "size": 2590618,
-      "source": "https://github.com/Tonic-Box/VitaVR",
-      "readme": "https://github.com/Tonic-Box/VitaVR/blob/main/README.md",
+      "source": "https://github.com/Tonic-Box/VitaPluginsSource/tree/main/vitavr",
+      "readme": "https://github.com/Tonic-Box/VitaPluginsSource/blob/main/vitavr/README.md",
       "icon": "https://raw.githubusercontent.com/Tonic-Box/VitaLitePlugins/HEAD/icons/vitavr.png",
       "iconSha256": "e728bf1d0713d1d77eda5800068c959ce05265e269f1059036df7b7012a3f6a5"
     },
@@ -43,8 +43,8 @@
       "url": "https://github.com/Tonic-Box/VitaLitePlugins/releases/download/vitawintertodt-1.0.1/vitawintertodt-1.0.1.jar",
       "sha256": "389e7148201cb3df0c12c741f8e57a4d9f1b04fd2c10bc44f363937a4bacb3b3",
       "size": 1760490,
-      "source": "https://github.com/Tonic-Box/VitaWinterTodt",
-      "readme": "https://github.com/Tonic-Box/VitaWinterTodt/blob/main/README.md",
+      "source": "https://github.com/Tonic-Box/VitaPluginsSource/tree/main/vitawintertodt",
+      "readme": "https://github.com/Tonic-Box/VitaPluginsSource/blob/main/vitawintertodt/README.md",
       "icon": "https://raw.githubusercontent.com/Tonic-Box/VitaLitePlugins/HEAD/icons/vitawintertodt.png",
       "iconSha256": "27635dbf6b2b0bbe12038bcfe31ccb514d0be57ff64eba714409c871b28a09c8"
     },
