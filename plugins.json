@@ -1,6 +1,6 @@
 {
   "name": "Vita Official",
-  "sequence": 1794417518,
+  "sequence": 1794426538,
   "plugins": [
     {
       "id": "vitavr",
@@ -47,6 +47,30 @@
       "readme": "https://github.com/Tonic-Box/VitaPluginsSource/blob/main/vitawintertodt/README.md",
       "icon": "https://raw.githubusercontent.com/Tonic-Box/VitaLitePlugins/HEAD/icons/vitawintertodt.png",
       "iconSha256": "27635dbf6b2b0bbe12038bcfe31ccb514d0be57ff64eba714409c871b28a09c8"
+    },
+    {
+      "id": "vitaarceuuslibrary",
+      "name": "Vita Arceuus Library",
+      "author": "TonicBox",
+      "description": "Finds the books the Arceuus Library customers ask for and reads the rewards",
+      "tags": [
+        "vita",
+        "arceuus",
+        "kourend",
+        "library",
+        "magic",
+        "runecraft"
+      ],
+      "version": "1.0.0",
+      "minVita": "1.13.6_8",
+      "requires": [],
+      "url": "https://github.com/Tonic-Box/VitaLitePlugins/releases/download/vitaarceuuslibrary-1.0.0/vitaarceuuslibrary-1.0.0.jar",
+      "sha256": "065906100991b9a79292b239396ca24c97ec5d79be7795b5be8336cfdbe107d3",
+      "size": 53741,
+      "source": "https://github.com/Tonic-Box/VitaPluginsSource/tree/main/vitaarceuuslibrary",
+      "readme": "https://github.com/Tonic-Box/VitaPluginsSource/blob/main/vitaarceuuslibrary/README.md",
+      "icon": "https://raw.githubusercontent.com/Tonic-Box/VitaLitePlugins/HEAD/icons/vitaarceuuslibrary.png",
+      "iconSha256": "9b2178b03c28c1276542ecfa1b178621fad90481dda5299c4b2f51b23559a9f9"
     },
     {
       "id": "fourtifysgemmining",
