@@ -26,6 +26,19 @@
     "icon": "vitawintertodt/src/main/resources/com/tonic/vitawintertodt/icon.png"
   },
   {
+    "id": "vitaarceuuslibrary",
+    "version": "1.0.0",
+    "author": "TonicBox",
+    "minVita": "1.13.6_8",
+    "requires": [],
+    "source": "https://github.com/Tonic-Box/VitaPluginsSource/tree/main/vitaarceuuslibrary",
+    "readme": "https://github.com/Tonic-Box/VitaPluginsSource/blob/main/vitaarceuuslibrary/README.md",
+    "project": "../VitaPluginsSource",
+    "task": ":vitaarceuuslibrary:jar",
+    "jar": "vitaarceuuslibrary/build/libs/VitaArceuusLibrary-*.jar",
+    "icon": "vitaarceuuslibrary/icon.png"
+  },
+  {
     "id": "fourtifysgemmining",
     "version": "1.0.1",
     "author": "Fourtifys",
