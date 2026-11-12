@@ -1,6 +1,6 @@
 {
   "name": "Vita Official",
-  "sequence": 1794426538,
+  "sequence": 1794454368,
   "plugins": [
     {
       "id": "vitavr",
@@ -71,6 +71,31 @@
       "readme": "https://github.com/Tonic-Box/VitaPluginsSource/blob/main/vitaarceuuslibrary/README.md",
       "icon": "https://raw.githubusercontent.com/Tonic-Box/VitaLitePlugins/HEAD/icons/vitaarceuuslibrary.png",
       "iconSha256": "9b2178b03c28c1276542ecfa1b178621fad90481dda5299c4b2f51b23559a9f9"
+    },
+    {
+      "id": "vitamta",
+      "name": "Vita MTA",
+      "author": "TonicBox",
+      "description": "Plays the Mage Training Arena rooms for pizazz points with the runes and staves you carry",
+      "tags": [
+        "vita",
+        "mta",
+        "mage",
+        "training",
+        "arena",
+        "magic",
+        "pizazz"
+      ],
+      "version": "1.0.0",
+      "minVita": "1.13.6_8",
+      "requires": [],
+      "url": "https://github.com/Tonic-Box/VitaLitePlugins/releases/download/vitamta-1.0.0/vitamta-1.0.0.jar",
+      "sha256": "c0911a4b3539baf99f786189b973adba832efadc08a53e150479337c95ee9e3b",
+      "size": 86946,
+      "source": "https://github.com/Tonic-Box/VitaPluginsSource/tree/main/vitamta",
+      "readme": "https://github.com/Tonic-Box/VitaPluginsSource/blob/main/vitamta/README.md",
+      "icon": "https://raw.githubusercontent.com/Tonic-Box/VitaLitePlugins/HEAD/icons/vitamta.png",
+      "iconSha256": "5960577788a82178cfd0eb94b3d05766536d6a6b49069c323c4fd4678ed6a85b"
     },
     {
       "id": "fourtifysgemmining",
