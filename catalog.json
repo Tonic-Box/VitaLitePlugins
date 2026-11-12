@@ -39,6 +39,19 @@
     "icon": "vitaarceuuslibrary/icon.png"
   },
   {
+    "id": "vitamta",
+    "version": "1.0.0",
+    "author": "TonicBox",
+    "minVita": "1.13.6_8",
+    "requires": [],
+    "source": "https://github.com/Tonic-Box/VitaPluginsSource/tree/main/vitamta",
+    "readme": "https://github.com/Tonic-Box/VitaPluginsSource/blob/main/vitamta/README.md",
+    "project": "../VitaPluginsSource",
+    "task": ":vitamta:jar",
+    "jar": "vitamta/build/libs/VitaMTA-*.jar",
+    "icon": "vitamta/icon.png"
+  },
+  {
     "id": "fourtifysgemmining",
     "version": "1.0.1",
     "author": "Fourtifys",
