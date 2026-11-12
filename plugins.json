@@ -1,6 +1,6 @@
 {
   "name": "Vita Official",
-  "sequence": 1794454368,
+  "sequence": 1794456593,
   "plugins": [
     {
       "id": "vitavr",
@@ -118,6 +118,29 @@
       "readme": "https://github.com/Fourtifys/Fourtifys-VitaLite-releases/blob/main/FourtifysGemMining/README.md",
       "icon": "https://raw.githubusercontent.com/Tonic-Box/VitaLitePlugins/HEAD/icons/fourtifysgemmining.png",
       "iconSha256": "8c782cb31ff9b9e4a13fdea9ef82aaec4c0284d52d450399663baccbb6ae38f2"
+    },
+    {
+      "id": "fourtifystormenteddemons",
+      "name": "Fourtifys Tormented Demons",
+      "author": "Fourtifys",
+      "description": "Kills Tormented Demons in the Guthixian temple, switching prayers and gear, and banks at Ferox Enclave",
+      "tags": [
+        "fourtifys",
+        "combat",
+        "tormented",
+        "demons",
+        "bossing"
+      ],
+      "version": "1.2.0",
+      "minVita": "1.13.6_7",
+      "requires": [],
+      "url": "https://github.com/Tonic-Box/VitaLitePlugins/releases/download/fourtifystormenteddemons-1.2.0/fourtifystormenteddemons-1.2.0.jar",
+      "sha256": "c962963e2430698d34be3bd17b41444477e3299230c39cb2269ad36fdc06d29c",
+      "size": 70552,
+      "source": "https://github.com/Fourtifys/Fourtifys-VitaLite-releases",
+      "readme": "https://github.com/Fourtifys/Fourtifys-VitaLite-releases/blob/main/FourtifysTormentedDemons/README.md",
+      "icon": "https://raw.githubusercontent.com/Tonic-Box/VitaLitePlugins/HEAD/icons/fourtifystormenteddemons.png",
+      "iconSha256": "dd582ec4008c6fb3fc50dda80e8ba659e17f9ff0c6c3fc1b8d9f5ec0c610454a"
     }
   ]
 }
