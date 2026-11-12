@@ -63,5 +63,18 @@
     "task": "jar",
     "jar": "build/libs/FourtifysGemMining-*.jar",
     "icon": "src/main/resources/com/fourtifys/gemmining/icon.png"
+  },
+  {
+    "id": "fourtifystormenteddemons",
+    "version": "1.2.0",
+    "author": "Fourtifys",
+    "minVita": "1.13.6_7",
+    "requires": [],
+    "source": "https://github.com/Fourtifys/Fourtifys-VitaLite-releases",
+    "readme": "https://github.com/Fourtifys/Fourtifys-VitaLite-releases/blob/main/FourtifysTormentedDemons/README.md",
+    "project": "../../Fourtifys-VitaLite-releases/FourtifysTormentedDemons",
+    "task": "jar",
+    "jar": "build/libs/FourtifysTormentedDemons-*.jar",
+    "icon": "src/main/resources/com/fourtifys/tormenteddemons/icon.png"
   }
 ]
