@@ -27,7 +27,7 @@
   },
   {
     "id": "vitaarceuuslibrary",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "TonicBox",
     "minVita": "1.13.6_8",
     "requires": [],
@@ -40,7 +40,7 @@
   },
   {
     "id": "vitamta",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "TonicBox",
     "minVita": "1.13.6_8",
     "requires": [],
@@ -53,7 +53,7 @@
   },
   {
     "id": "vitatempoross",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": "TonicBox",
     "minVita": "1.13.6_8",
     "requires": [],
