@@ -1,6 +1,6 @@
 {
   "name": "Vita Official",
-  "sequence": 1794456593,
+  "sequence": 1794844728,
   "plugins": [
     {
       "id": "vitavr",
@@ -96,6 +96,31 @@
       "readme": "https://github.com/Tonic-Box/VitaPluginsSource/blob/main/vitamta/README.md",
       "icon": "https://raw.githubusercontent.com/Tonic-Box/VitaLitePlugins/HEAD/icons/vitamta.png",
       "iconSha256": "5960577788a82178cfd0eb94b3d05766536d6a6b49069c323c4fd4678ed6a85b"
+    },
+    {
+      "id": "vitatempoross",
+      "name": "Vita Tempoross",
+      "author": "TonicBox",
+      "description": "Plays the Tempoross skilling boss on mass worlds with the harpoon and gear you bring",
+      "tags": [
+        "vita",
+        "tempoross",
+        "fishing",
+        "harpoonfish",
+        "skilling",
+        "boss",
+        "minigame"
+      ],
+      "version": "1.0.0",
+      "minVita": "1.13.6_8",
+      "requires": [],
+      "url": "https://github.com/Tonic-Box/VitaLitePlugins/releases/download/vitatempoross-1.0.0/vitatempoross-1.0.0.jar",
+      "sha256": "e552026d07c68c841d686bffa8a3c347b5ed32317fc1f60840bdc2e52ffef62e",
+      "size": 56791,
+      "source": "https://github.com/Tonic-Box/VitaPluginsSource/tree/main/vitatempoross",
+      "readme": "https://github.com/Tonic-Box/VitaPluginsSource/blob/main/vitatempoross/README.md",
+      "icon": "https://raw.githubusercontent.com/Tonic-Box/VitaLitePlugins/HEAD/icons/vitatempoross.png",
+      "iconSha256": "02eed4dee6f56402523791d7b617c2e364adc8872481860b88277f640afe3c6d"
     },
     {
       "id": "fourtifysgemmining",
