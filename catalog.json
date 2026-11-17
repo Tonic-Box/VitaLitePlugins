@@ -65,6 +65,19 @@
     "icon": "vitatempoross/icon.png"
   },
   {
+    "id": "vitatithefarm",
+    "version": "1.0.0",
+    "author": "TonicBox",
+    "minVita": "1.13.6_8",
+    "requires": [],
+    "source": "https://github.com/Tonic-Box/VitaPluginsSource/tree/main/vitatithefarm",
+    "readme": "https://github.com/Tonic-Box/VitaPluginsSource/blob/main/vitatithefarm/README.md",
+    "project": "../VitaPluginsSource",
+    "task": ":vitatithefarm:jar",
+    "jar": "vitatithefarm/build/libs/VitaTitheFarm-*.jar",
+    "icon": "vitatithefarm/icon.png"
+  },
+  {
     "id": "fourtifysgemmining",
     "version": "1.0.1",
     "author": "Fourtifys",
