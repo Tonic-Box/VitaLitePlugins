@@ -1,6 +1,6 @@
 {
   "name": "Vita Official",
-  "sequence": 1794853462,
+  "sequence": 1794907962,
   "plugins": [
     {
       "id": "vitavr",
@@ -121,6 +121,31 @@
       "readme": "https://github.com/Tonic-Box/VitaPluginsSource/blob/main/vitatempoross/README.md",
       "icon": "https://raw.githubusercontent.com/Tonic-Box/VitaLitePlugins/HEAD/icons/vitatempoross.png",
       "iconSha256": "02eed4dee6f56402523791d7b617c2e364adc8872481860b88277f640afe3c6d"
+    },
+    {
+      "id": "vitatithefarm",
+      "name": "Vita Tithe Farm",
+      "author": "TonicBox",
+      "description": "Plays the Tithe Farm minigame for Farming XP and reward points",
+      "tags": [
+        "vita",
+        "tithe",
+        "farm",
+        "farming",
+        "skilling",
+        "minigame",
+        "hosidius"
+      ],
+      "version": "1.0.0",
+      "minVita": "1.13.6_8",
+      "requires": [],
+      "url": "https://github.com/Tonic-Box/VitaLitePlugins/releases/download/vitatithefarm-1.0.0/vitatithefarm-1.0.0.jar",
+      "sha256": "249b06d58a514403b966c70b2c133f86481ba92df81b9dc5b2cf203d9248f002",
+      "size": 70178,
+      "source": "https://github.com/Tonic-Box/VitaPluginsSource/tree/main/vitatithefarm",
+      "readme": "https://github.com/Tonic-Box/VitaPluginsSource/blob/main/vitatithefarm/README.md",
+      "icon": "https://raw.githubusercontent.com/Tonic-Box/VitaLitePlugins/HEAD/icons/vitatithefarm.png",
+      "iconSha256": "bb8c00e4a488b39b65e4750c1017acd24b0d46c9e847a804328d662ed00efbdb"
     },
     {
       "id": "fourtifysgemmining",
